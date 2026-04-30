@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proteo-R1 | ICML 2026</title>
+    <meta
+      name="description"
+      content="Official website for Proteo-R1, an ICML 2026 paper."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="container top-nav-inner">
+        <div class="brand">Proteo-R1</div>
+        <div class="top-nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#bibtex">BibTeX</a>
+        </div>
+        <a class="github-btn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="container">
+        <p class="venue">ICML 2026 (Accepted)</p>
+        <h1>Proteo-R1: Reasoning Foundation Models for <em>De Novo</em> Protein Design</h1>
+        <p class="authors">
+          Fang Wu*<sup>1</sup>, Weihao Xuan*<sup>2,3</sup>, Heli Qi*<sup>3</sup>, Hanqun
+          Cao*<sup>4</sup>, Heng-Jui Chang*<sup>1</sup>, Zeqi Zhou*<sup>2</sup>, Haokai
+          Zhao<sup>5</sup>, Ma Jian<sup>6</sup>, Carl Ma<sup>1</sup>, Yu-Chi Cheng<sup>7</sup>,
+          Kuan Pang<sup>1</sup>, Xiangru Tang<sup>8</sup>, Zehong Wang<sup>9</sup>, Guanlue
+          Li<sup>10</sup>, Hanchen Wang<sup>1</sup>, Kejun Ying<sup>1</sup>, Pan Lu<sup>1</sup>,
+          Chiho Im<sup>1</sup>, Seungju Han<sup>1</sup>, Peng Xia<sup>11</sup>, Tinson
+          Xu<sup>12</sup>, Yinxi Li<sup>13</sup>, Deyao Zhu<sup>14</sup>, Pheng-Ann
+          Heng<sup>4</sup>, Naoto Yokoya<sup>2,3</sup>, Masashi Sugiyama<sup>2,3</sup>, Li Erran
+          Li<sup>15</sup>, Jure Leskovec<sup>1</sup>, Yejin Choi<sup>1</sup>
+        </p>
+        <p class="affiliations-inline">
+          <sup>1</sup>Stanford University; <sup>2</sup>University of Tokyo; <sup>3</sup>RIKEN AIP;
+          <sup>4</sup>Chinese University of Hong Kong; <sup>5</sup>University of New South Wales;
+          <sup>6</sup>Shanghai Jiao Tong University; <sup>7</sup>Harvard University; <sup>8</sup>Yale University;
+          <sup>9</sup>University of Notre Dame; <sup>10</sup>University of Hamburg; <sup>11</sup>UNC Chapel Hill;
+          <sup>12</sup>University of Chicago; <sup>13</sup>University of Waterloo; <sup>14</sup>ByteDance Seed;
+          <sup>15</sup>Amazon
+        </p>
+        <p class="note">* Equal contribution</p>
+        <p class="corresponding">
+          Corresponding authors:
+          <a href="mailto:fangwu97@stanford.edu">Fang Wu</a> (<a href="mailto:fangwu97@stanford.edu">fangwu97@stanford.edu</a>),
+          <a href="mailto:jure@cs.stanford.edu">Jure Leskovec</a> (<a href="mailto:jure@cs.stanford.edu">jure@cs.stanford.edu</a>),
+          <a href="mailto:yejinc@stanford.edu">Yejin Choi</a> (<a href="mailto:yejinc@stanford.edu">yejinc@stanford.edu</a>)
+        </p>
+        <div class="links">
+          <a href="#" target="_blank" rel="noreferrer">Paper PDF (to update)</a>
+          <a href="#" target="_blank" rel="noreferrer">ArXiv (to update)</a>
+          <a href="#" target="_blank" rel="noreferrer">OpenReview (to update)</a>
+          <a href="#" target="_blank" rel="noreferrer">Code (to update)</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section id="overview" class="section">
+        <div class="container content-card">
+          <h2>Abstract</h2>
+          <p>
+            Deep learning in <em>de novo</em> protein design has achieved atomic-level fidelity.
+            However, existing models remain largely non-deliberative: they directly synthesize
+            molecular geometries without explicitly reasoning about which residues or interactions
+            are functionally essential. As a result, design decisions are entangled with continuous
+            sampling dynamics, limiting interpretability, controllability, and systematic reuse of
+            biochemical knowledge. We introduce <strong>Proteo-R1</strong>, a reasoning-guided
+            protein design framework that explicitly decouples <em>molecular understanding</em>
+            from <em>geometric generation</em>. Proteo-R1 adopts a dual-expert architecture in
+            which a multimodal large language model (MLLM) serves as an understanding expert,
+            analyzing protein sequences, structures, and textual context to identify key functional
+            residues that govern binding and specificity. These residue-level decisions are then
+            passed as hard constraints to a separate diffusion-based generation expert, which
+            performs conditional co-design while respecting fixed interaction anchors. This
+            factorization mirrors how human experts approach molecular engineering: first, reasoning
+            about critical interactions, then optimizing geometry subject to those constraints. By
+            operationalizing reasoning as explicit residue-level commitments rather than latent
+            textual guidance, Proteo-R1 achieves stable, interpretable, and modular integration of
+            LLM reasoning with state-of-the-art geometric generative models.
+          </p>
+        </div>
+      </section>
+
+      <section id="method" class="section alt">
+        <div class="container content-card">
+          <h2>Method Overview</h2>
+          <p>
+            Proteo-R1 is a dual-expert framework that couples a multimodal reasoning expert with a
+            diffusion-based generation expert. The reasoner identifies residue-level interaction
+            anchors from sequence, structure, and instruction context, and the generator performs
+            conditional co-design under these explicit biochemical constraints.
+          </p>
+          <object class="pdf-viewer" data="figure.pdf" type="application/pdf">
+            <p>
+              Your browser cannot display this PDF directly.
+              <a href="figure.pdf" target="_blank" rel="noreferrer">Open figure.pdf</a>
+            </p>
+          </object>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <div class="container content-card">
+          <h2>Key Results</h2>
+          <ul>
+            <li>Reasoning and generation are explicitly decoupled via residue-level anchors.</li>
+            <li>Reasoning-guided CDR co-design improves realism, controllability, and interpretability.</li>
+            <li>The architecture is modular and can integrate with modern geometric generators.</li>
+          </ul>
+
+          <h3>Main Tables from Paper</h3>
+
+          <div class="table-card">
+            <h4>Geometry-Centric Evaluation of Simultaneous Multi-CDR Redesign</h4>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>H1</th><th>H2</th><th>H3</th><th>L1</th><th>L2</th><th>L3</th>
+                    <th>Loop-RMSD</th><th>IMP</th><th>Clash_in</th><th>Clash_out</th><th>JSD_bb</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>DiffAb</td><td>1.52</td><td>1.44</td><td>4.29</td><td>1.43</td><td>1.21</td><td>1.80</td><td>5.03</td><td>53.35</td><td>--</td><td>--</td><td>--</td></tr>
+                  <tr><td>dyMEAN</td><td>1.65</td><td>1.47</td><td>6.15</td><td>1.58</td><td>1.23</td><td>1.59</td><td>7.84</td><td>5.60</td><td>--</td><td>--</td><td>--</td></tr>
+                  <tr><td>HTP</td><td>1.56</td><td>1.45</td><td>4.32</td><td>1.55</td><td>1.20</td><td>1.73</td><td>7.18</td><td>6.09</td><td>--</td><td>--</td><td>--</td></tr>
+                  <tr><td>IgGM</td><td>1.73</td><td>1.55</td><td>4.37</td><td>1.62</td><td>1.51</td><td>1.71</td><td>9.18</td><td>9.01</td><td>25.63%</td><td>1.45%</td><td>0.2873</td></tr>
+                  <tr><td>AbX</td><td>1.55</td><td>1.23</td><td>4.91</td><td>0.76</td><td>0.40</td><td>1.30</td><td>5.77</td><td>52.26</td><td>1.47%</td><td>0.30%</td><td>0.2497</td></tr>
+                  <tr><td>MFDesign</td><td>1.61</td><td>1.44</td><td>3.71</td><td>1.65</td><td>1.15</td><td>1.69</td><td>4.28</td><td>59.16</td><td>0.53%</td><td>0.26%</td><td>0.2734</td></tr>
+                  <tr class="highlight-row"><td>Proteo-R1</td><td>1.33</td><td>1.13</td><td>3.81</td><td>1.54</td><td>0.85</td><td>1.51</td><td>4.51</td><td>56.58</td><td>0.50%</td><td>0.14%</td><td>0.2661</td></tr>
+                  <tr><td>+ Oracle Anchor</td><td>1.43</td><td>1.16</td><td>3.34</td><td>1.07</td><td>0.76</td><td>1.24</td><td>3.93</td><td>62.25</td><td>0.27%</td><td>0.23%</td><td>0.2043</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <h4>CDR-H3 Design on RAbD</h4>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Model</th><th>AAR</th><th>lDDT</th><th>TMscore</th><th>RMSD</th><th>DockQ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>RosettaAb*</td><td>32.31%</td><td>0.8272</td><td>0.9717</td><td>17.70</td><td>0.137</td></tr>
+                  <tr><td>DiffAb*</td><td>35.31%</td><td>0.8281</td><td>0.9695</td><td>23.24</td><td>0.158</td></tr>
+                  <tr><td>MEAN*</td><td>37.38%</td><td>0.8252</td><td>0.9688</td><td>17.30</td><td>0.162</td></tr>
+                  <tr><td>GeoAB*</td><td>40.02%</td><td>0.8367</td><td>0.9695</td><td>15.43</td><td>0.187</td></tr>
+                  <tr><td>HERN</td><td>32.65%</td><td>---</td><td>---</td><td>9.15</td><td>0.294</td></tr>
+                  <tr><td>dyMEAN</td><td>41.84%</td><td>0.8392</td><td>0.9718</td><td>8.10</td><td>0.407</td></tr>
+                  <tr><td>DGENet</td><td>42.67%</td><td>0.8551</td><td>0.9747</td><td>7.19</td><td>0.431</td></tr>
+                  <tr><td>BoltzGen</td><td>39.07%</td><td>0.8372</td><td>0.9675</td><td>2.69</td><td>0.473</td></tr>
+                  <tr class="highlight-row"><td>Proteo-R1</td><td>10.75%</td><td>0.9693</td><td>0.9816</td><td>2.46</td><td>0.801</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <h4>Sequence Recovery vs Inverse Folding Consistency</h4>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>CDR</th>
+                    <th>AbX (AAR / IF-AAR / Delta)</th>
+                    <th>IgGM (AAR / IF-AAR / Delta)</th>
+                    <th>MFDesign (AAR / IF-AAR / Delta)</th>
+                    <th>Proteo-R1 (AAR / IF-AAR / Delta)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>H1</td><td>71.34 / 59.80 / -11.54</td><td>73.98 / 62.76 / -11.22</td><td>74.95 / 60.90 / -14.05</td><td>42.62 / 61.17 / +18.55</td></tr>
+                  <tr><td>H2</td><td>59.15 / 46.10 / -13.05</td><td>59.15 / 45.79 / -13.36</td><td>67.54 / 40.63 / -26.91</td><td>18.97 / 31.67 / +12.70</td></tr>
+                  <tr><td>H3</td><td>31.58 / 18.96 / -12.62</td><td>29.42 / 19.55 / -9.87</td><td>65.04 / 19.73 / -45.31</td><td>15.06 / 19.27 / +4.21</td></tr>
+                  <tr><td>L1</td><td>89.13 / 62.02 / -27.11</td><td>72.20 / 56.53 / -15.67</td><td>82.98 / 54.94 / -28.04</td><td>47.12 / 51.40 / +4.28</td></tr>
+                  <tr><td>L2</td><td>90.90 / 62.33 / -28.57</td><td>71.43 / 55.66 / -15.77</td><td>87.81 / 53.22 / -34.59</td><td>46.43 / 51.43 / +5.00</td></tr>
+                  <tr><td>L3</td><td>67.82 / 43.49 / -24.33</td><td>59.43 / 41.84 / -17.59</td><td>80.15 / 40.98 / -39.17</td><td>40.43 / 37.09 / -3.34</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <h4>Compatibility with UniMoMo Backbone (CDR-H3)</h4>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Model</th><th>#Gen</th><th>AAR</th><th>RMSD</th><th>IMP</th><th>Delta G</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>MEAN</td><td>1</td><td>29.13%</td><td>1.87</td><td>6.67%</td><td>--</td></tr>
+                  <tr><td>dyMEAN</td><td>1</td><td>31.65%</td><td>8.21</td><td>11.86%</td><td>--</td></tr>
+                  <tr><td>GeoAB-R</td><td>1</td><td>32.04%</td><td>1.67</td><td>6.67%</td><td>--</td></tr>
+                  <tr><td>UniMoMo (all)</td><td>100</td><td>52.34%</td><td>1.04</td><td>65.00%</td><td>8.46</td></tr>
+                  <tr class="highlight-row"><td>Proteo-R1 (UniMoMo)</td><td>100</td><td>48.94%</td><td>0.83</td><td>67.79%</td><td>7.35</td></tr>
+                  <tr><td>+ Oracle Anchor</td><td>100</td><td>100%</td><td>0.84</td><td>74.5%</td><td>4.51</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bibtex" class="section alt">
+        <div class="container">
+          <h2>BibTeX</h2>
+          <pre><code>@inproceedings{proteor1_icml2026,
+  title={Proteo-R1: Reasoning Foundation Models for De Novo Protein Design},
+  author={Wu, Fang and Xuan, Weihao and Qi, Heli and Cao, Hanqun and Chang, Heng-Jui and Zhou, Zeqi and Zhao, Haokai and Jian, Ma and Ma, Carl and Cheng, Yu-Chi and Pang, Kuan and Tang, Xiangru and Wang, Zehong and Li, Guanlue and Wang, Hanchen and Ying, Kejun and Lu, Pan and Im, Chiho and Han, Seungju and Xia, Peng and Xu, Tinson and Li, Yinxi and Zhu, Deyao and Heng, Pheng-Ann and Yokoya, Naoto and Sugiyama, Masashi and Li, Li Erran and Leskovec, Jure and Choi, Yejin},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Copyright © 2026 Proteo-R1 Authors.</p>
+      </div>
+    </footer>
+  </body>
+</html>
