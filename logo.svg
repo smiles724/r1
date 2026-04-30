@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Proteo-R1">
+  <defs>
+    <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e4fd4"/>
+      <stop offset="55%" stop-color="#2a66ff"/>
+      <stop offset="100%" stop-color="#4ec8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" rx="12" fill="url(#logoBg)"/>
+  <!-- Antibody Y (simplified) -->
+  <path
+    d="M24 38V22m0 0-9-12m9 12 9-12M15 10l-4-4m22 4 4-4"
+    stroke="#ffffff"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <!-- Helix segment -->
+  <path
+    d="M8 30c3-1 5-3 6-6s4-4 7-3"
+    stroke="#ffffff"
+    stroke-width="2"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.85"
+  />
+  <circle cx="10" cy="28" r="2" fill="#ffffff" opacity="0.95"/>
+  <circle cx="14" cy="24" r="1.6" fill="#ffffff" opacity="0.8"/>
+</svg>

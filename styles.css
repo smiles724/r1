@@ -1,10 +1,11 @@
 :root {
-  --bg: #f3f7ff;
-  --text: #11203a;
+  --bg: #f5f9ff;
+  --text: #152c48;
   --muted: #5a6780;
   --card: #ffffff;
-  --line: #d7e0f0;
-  --accent: #2a66ff;
+  --line: #d0daf0;
+  --accent: #3b74f5;
+  --nav-text: #2a4268;
 }
 
 * {
@@ -19,8 +20,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background:
-    radial-gradient(circle at 15% 5%, #dfe9ff 0%, transparent 35%),
-    radial-gradient(circle at 90% 15%, #e8f8ff 0%, transparent 30%),
+    radial-gradient(ellipse 80% 50% at 50% -10%, #e8f0ff 0%, transparent 55%),
+    radial-gradient(circle at 12% 20%, rgba(200, 220, 255, 0.45) 0%, transparent 42%),
+    radial-gradient(circle at 88% 30%, rgba(210, 236, 255, 0.4) 0%, transparent 38%),
     var(--bg);
   color: var(--text);
   line-height: 1.65;
@@ -35,9 +37,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(8px);
-  background: rgba(8, 20, 39, 0.75);
-  border-bottom: 1px solid rgba(173, 198, 255, 0.25);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(120, 150, 200, 0.22);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .top-nav-inner {
@@ -49,9 +52,16 @@ body {
 }
 
 .brand {
-  color: #eef4ff;
+  color: var(--nav-text);
   font-weight: 700;
   letter-spacing: 0.02em;
+  text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: var(--accent);
 }
 
 .top-nav-links {
@@ -61,7 +71,7 @@ body {
 }
 
 .top-nav-links a {
-  color: #cddcff;
+  color: #4a6288;
   text-decoration: none;
   font-size: 0.92rem;
   padding: 0.42rem 0.65rem;
@@ -69,32 +79,39 @@ body {
 }
 
 .top-nav-links a:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  background: rgba(59, 116, 245, 0.1);
+  color: var(--accent);
 }
 
 .github-btn {
-  color: #fff;
+  color: var(--accent);
   text-decoration: none;
   font-size: 0.9rem;
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
-  border: 1px solid rgba(193, 216, 255, 0.6);
-  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(59, 116, 245, 0.45);
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .github-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(59, 116, 245, 0.12);
+  border-color: var(--accent);
 }
 
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #081427 0%, #0f2352 45%, #17306b 100%);
-  color: #fff;
-  padding: 4.6rem 0 3.8rem;
+  background: linear-gradient(
+    165deg,
+    #f5f8ff 0%,
+    #e8f0fc 38%,
+    #dce8f8 72%,
+    #d0e0f4 100%
+  );
+  color: var(--text);
+  padding: 4.2rem 0 3.5rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(100, 130, 185, 0.18);
 }
 
 .hero::before,
@@ -104,16 +121,16 @@ body {
   pointer-events: none;
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.2;
+  opacity: 0.11;
 }
 
-/* Protein-like ribbon motif */
+/* Protein-like ribbon motif (subtle on light hero) */
 .hero::before {
   width: 460px;
   height: 460px;
   right: -70px;
   bottom: -120px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 520'%3E%3Cpath d='M52 320c56-81 95-92 142-80 53 13 68 75 116 79 46 4 69-46 120-122' stroke='%23bfe2ff' stroke-width='18' fill='none' stroke-linecap='round'/%3E%3Cpath d='M67 246c42-61 70-66 105-58 36 8 48 52 82 55 33 3 52-31 94-89' stroke='%239cc8ff' stroke-width='10' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='115' cy='290' r='10' fill='%23d8f0ff'/%3E%3Ccircle cx='214' cy='273' r='9' fill='%23d8f0ff'/%3E%3Ccircle cx='302' cy='328' r='8' fill='%23d8f0ff'/%3E%3Ccircle cx='390' cy='258' r='8' fill='%23d8f0ff'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 520'%3E%3Cpath d='M52 320c56-81 95-92 142-80 53 13 68 75 116 79 46 4 69-46 120-122' stroke='%236b8fc9' stroke-width='18' fill='none' stroke-linecap='round'/%3E%3Cpath d='M67 246c42-61 70-66 105-58 36 8 48 52 82 55 33 3 52-31 94-89' stroke='%2380a3d4' stroke-width='10' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='115' cy='290' r='10' fill='%2394b4dc'/%3E%3Ccircle cx='214' cy='273' r='9' fill='%2394b4dc'/%3E%3Ccircle cx='302' cy='328' r='8' fill='%2394b4dc'/%3E%3Ccircle cx='390' cy='258' r='8' fill='%2394b4dc'/%3E%3C/svg%3E");
 }
 
 /* Antibody-like Y motif */
@@ -122,8 +139,8 @@ body {
   height: 320px;
   left: -40px;
   top: 70px;
-  opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23d8e9ff' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M150 252V165'/%3E%3Cpath d='M150 165L94 98'/%3E%3Cpath d='M150 165L206 98'/%3E%3Cpath d='M94 98L69 57'/%3E%3Cpath d='M206 98l25-41'/%3E%3C/g%3E%3Ccircle cx='150' cy='164' r='8' fill='%23eaf4ff'/%3E%3Ccircle cx='94' cy='98' r='6' fill='%23eaf4ff'/%3E%3Ccircle cx='206' cy='98' r='6' fill='%23eaf4ff'/%3E%3C/svg%3E");
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%236b8fc9' stroke-width='14' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M150 252V165'/%3E%3Cpath d='M150 165L94 98'/%3E%3Cpath d='M150 165L206 98'/%3E%3Cpath d='M94 98L69 57'/%3E%3Cpath d='M206 98l25-41'/%3E%3C/g%3E%3Ccircle cx='150' cy='164' r='8' fill='%2380a3d4'/%3E%3Ccircle cx='94' cy='98' r='6' fill='%2380a3d4'/%3E%3Ccircle cx='206' cy='98' r='6' fill='%2380a3d4'/%3E%3C/svg%3E");
 }
 
 .hero-glow {
@@ -136,7 +153,7 @@ body {
 .hero-glow-1 {
   width: 420px;
   height: 420px;
-  background: rgba(93, 227, 255, 0.2);
+  background: rgba(140, 190, 255, 0.35);
   top: -140px;
   left: -120px;
 }
@@ -144,14 +161,14 @@ body {
 .hero-glow-2 {
   width: 520px;
   height: 520px;
-  background: rgba(120, 109, 255, 0.22);
+  background: rgba(180, 210, 255, 0.4);
   right: -180px;
   top: -180px;
 }
 
 .venue {
   margin: 0;
-  color: #b9d0ff;
+  color: #5a7ab0;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -170,31 +187,31 @@ h1 {
 }
 
 .authors {
-  color: #eff5ff;
+  color: #2c4666;
   font-size: 1rem;
 }
 
 .affiliations-inline {
   margin: 0.6rem auto 0;
   max-width: 920px;
-  color: #cddbff;
+  color: #4a6288;
   font-size: 0.9rem;
 }
 
 .note {
-  color: #c9d5f2;
+  color: #5a6f8a;
   font-size: 0.95rem;
 }
 
 .corresponding {
   margin: 0.4rem auto 0;
   max-width: 920px;
-  color: #d8e5ff;
+  color: #4a6288;
   font-size: 0.92rem;
 }
 
 .corresponding a {
-  color: #ffffff;
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -209,9 +226,9 @@ h1 {
 
 .links a {
   text-decoration: none;
-  color: #fff;
-  border: 1px solid rgba(150, 184, 255, 0.5);
-  background: rgba(255, 255, 255, 0.09);
+  color: var(--accent);
+  border: 1px solid rgba(59, 116, 245, 0.45);
+  background: rgba(255, 255, 255, 0.75);
   padding: 0.56rem 1rem;
   border-radius: 999px;
   font-size: 0.95rem;
@@ -219,8 +236,8 @@ h1 {
 }
 
 .links a:hover {
-  background: rgba(255, 255, 255, 0.19);
-  border-color: rgba(193, 216, 255, 0.95);
+  background: rgba(59, 116, 245, 0.12);
+  border-color: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -355,10 +372,6 @@ th {
 
   .top-nav-inner {
     min-height: 52px;
-  }
-
-  .brand {
-    display: none;
   }
 
   .top-nav-links {
