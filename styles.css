@@ -289,13 +289,40 @@ h4 {
   padding: 2rem 1rem;
 }
 
-.pdf-viewer {
-  margin-top: 1rem;
-  width: 100%;
-  height: min(72vh, 820px);
+.method-figure {
+  margin: 1rem 0 0;
+  padding: 0;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 48, 120, 0.06);
+}
+
+.method-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.method-figure-caption {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: right;
+  border-top: 1px solid var(--line);
+  background: #fafcff;
+}
+
+.method-figure-caption a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.method-figure-caption a:hover {
+  text-decoration: underline;
 }
 
 pre {
