@@ -241,6 +241,17 @@ h1 {
   transform: translateY(-1px);
 }
 
+.links-note {
+  margin-top: 0.85rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
 .page-shell {
   padding: 1.2rem 0 0.5rem;
 }
